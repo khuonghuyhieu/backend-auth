@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 // import routes
 const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
 
 //DESTRUCTURE ENV VARIABLES WITH DEFAULT VALUES
 dotenv.config();
@@ -26,5 +27,6 @@ app.use(express.json());
 
 //Routes
 app.use("/v1/auth", authRoute);
+app.use("/v1/user", userRoute);
 
 app.listen(PORT, () => console.log("🚀 Server is Running"));
