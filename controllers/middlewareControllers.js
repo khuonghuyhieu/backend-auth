@@ -18,6 +18,16 @@ const middlewareControllers = {
       res.status(401).json("You're not authentication");
     }
   },
+
+  verifyTokenAndAdminAuth: (req, res, next) => {
+    middlewareControllers.verifyToken(req, res, () => {
+      if (req.user.id == req.params.id || req.user.admin) {
+        next();
+      } else {
+        res.status(403).json("You're not allowed to delete other");
+      }
+    });
+  },
 };
 
 module.exports = middlewareControllers;
