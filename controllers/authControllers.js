@@ -24,6 +24,29 @@ const authController = {
     }
   },
 
+  //Genera Access Token
+  generaAccessToken: (user) => {
+    return jwt.sign(
+      {
+        id: user.id,
+        admin: user.admin,
+      },
+      process.env.JWT_ACCESS_KEY,
+      { expiresIn: "30s" }
+    );
+  },
+  //Genera Refresh Token
+  generaRefreshToken: (user) => {
+    return jwt.sign(
+      {
+        id: user.id,
+        admin: user.admin,
+      },
+      process.env.JWT_REFRESH_KEY,
+      { expiresIn: "30s" }
+    );
+  },
+
   //LoginUser
   loginUser: async (req, res) => {
     try {
@@ -40,14 +63,9 @@ const authController = {
         res.status(404).json("Wrong password!");
       }
       if (user && validPassword) {
-        const accessToken = jwt.sign(
-          {
-            id: user.id,
-            admin: user.admin,
-          },
-          process.env.JWT_ACCESS_KEY,
-          { expiresIn: "30d" }
-        );
+        const accessToken = authController.generaAccessToken(user.id);
+        const refreshToken = authController.generaRefreshToken(user.id);
+
         const { password, ...others } = user._doc;
         res.status(200).json({ ...others, accessToken });
       }
