@@ -8,3 +8,8 @@ Overview of dependencies
 - mercedlogger: A library I created for colorful logs
 - mongoose: ODM for connecting and sending queries to a mongo database
 - cors: adds cors headers so our frontend app can make requests
+
+- Read docs:
+
+* handle with mongodb: https://mongoosejs.com/docs/guide.html
+* jwt: https://jwt.io/introduction
