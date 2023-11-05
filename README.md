@@ -13,3 +13,17 @@ Overview of dependencies
 
 * handle with mongodb: https://mongoosejs.com/docs/guide.html
 * jwt: https://jwt.io/introduction
+
+Store token
+
+1. Local store
+   Attack with XSS
+2. Cookies
+   Attack with CSRF -> firewall with samesite
+3. HTTPONLY Cookies an toàn nhất
+
+Using:
+Redux store -> access token
+HTTPONLY Cookies -> refresh token
+
+bảo mật tối ưu nhất: BFF PATTEN (Backend for Fontend)
