@@ -27,3 +27,5 @@ Redux store -> access token
 HTTPONLY Cookies -> refresh token
 
 bảo mật tối ưu nhất: BFF PATTEN (Backend for Fontend)
+
+Có thể dùng Redis Database để lưu refresh token
